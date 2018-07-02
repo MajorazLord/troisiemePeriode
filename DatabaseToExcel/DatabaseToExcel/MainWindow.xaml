@@ -1,0 +1,26 @@
+﻿<Window x:Class="DatabaseToExcel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="200" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+            <Label Content="Jour : " />
+            <ComboBox x:Name="CbJour" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="120" ToolTip="Saisir le jour de la saisie"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <Label Content="N° saisie : " />
+            <ComboBox x:Name="CbNbJour" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="60" ToolTip="Choisir le numéro de la saisie"/>
+        </StackPanel>
+        <Image Grid.Row="0" Grid.Column="2" Width="40" Height="40" Source="Images/reload_arrow.png" ToolTip="Recharger les informations"/>
+        <Button Grid.Column="0" Grid.ColumnSpan="3" Content="Lancer la création du fichier excel" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="194" Height="36"/>
+    </Grid>
+</Window>

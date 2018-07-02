@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AuditQtitéGueret", "AuditQtitéGueret\AuditQtitéGueret.vbproj", "{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}"
+EndProject
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "AuditGueretCab", "AuditGueretCab\AuditGueretCab.vddproj", "{896C6379-E3AE-4928-94AE-6FB6EDCF7B70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79CBD6F1-576F-4EC2-AECE-BBA311FCB060}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{896C6379-E3AE-4928-94AE-6FB6EDCF7B70}.Debug|Any CPU.ActiveCfg = Debug
+		{896C6379-E3AE-4928-94AE-6FB6EDCF7B70}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+﻿<Application x:Class="Application"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TracabiliteV2"
+    StartupUri="View/VuePrincipal.xaml">
+    <Application.Resources>
+        <Style x:Key="FontCinzel">
+            <Setter Property="TextElement.FontFamily" Value="Fonts/#cinzelbold.otf"/>
+        </Style>
+    </Application.Resources>
+</Application>

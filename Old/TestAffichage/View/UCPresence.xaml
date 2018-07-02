@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="TestAffichage.View.UCPresence"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TestAffichage.ViewModel"
+        xmlns:utils="clr-namespace:TestAffichage.Utils"
+        Height="Auto" Width="Auto"
+        Name="UcSelect">
+    <DockPanel>
+        <TreeView x:Name="TV2"  ItemsSource="{Binding Secteurs, Mode=TwoWay}">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsInitiallySelected, Mode=OneTime}" />
+                    <!--<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />-->
+                    <Setter Property="FontWeight" Value="Normal" />
+
+                    <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True" />
+                    <Setter Property="utils:VirtualToggleButton.IsVirtualToggleButton" Value="True" />
+                    <Setter Property="utils:VirtualToggleButton.IsChecked" Value="{Binding IsChecked}" />
+
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.Resources>
+                <HierarchicalDataTemplate 
+                  DataType="{x:Type local:SecteurVM}" 
+                  ItemsSource="{Binding Children, Mode=OneTime}"
+                  >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<CheckBox
+                            Focusable="False" 
+                            IsChecked="{Binding IsChecked, Mode=TwoWay}" 
+                            VerticalAlignment="Center" />-->
+                        <TextBlock Text="{Binding Code}" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+
+                <HierarchicalDataTemplate 
+                  DataType="{x:Type local:PosteDeChargeVM}" 
+                  ItemsSource="{Binding Children, Mode=Default}"
+                  >
+                    <Grid Width="200" Height="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="95"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Code}" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <RadioButton
+                                Name="RbOui"
+                                IsChecked="False"
+                                Content="OUI"
+                                Checked="Rb_OnChecked"
+                            />
+                            <RadioButton
+                                Name="RbNon"
+                                Margin="5,0,0,0"
+                                IsChecked="False"
+                                Content="NON"
+                                Checked="Rb_OnChecked"
+                            />
+                        </StackPanel>
+                        
+                    </Grid>
+                </HierarchicalDataTemplate>
+
+                <DataTemplate DataType="{x:Type local:MachineVM}">
+                    <StackPanel Orientation="Horizontal">
+                        <!--<CheckBox
+                            Focusable="False" 
+                            IsChecked="{Binding IsChecked, Mode=TwoWay}" 
+                            VerticalAlignment="Center" />-->
+                        <TextBlock Text="{Binding NoMachine}" />
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+    </DockPanel>
+</UserControl>

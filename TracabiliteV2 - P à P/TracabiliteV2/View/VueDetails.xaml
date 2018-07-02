@@ -1,0 +1,38 @@
+﻿<Window x:Class="VueDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TracabiliteV2"
+        mc:Ignorable="d"
+        Title="VueDetails" Height="480" Width="590"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="LbTitre" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Content="Details du contenant" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <Label x:Name="LbTitreLot" Grid.Column="0" Grid.Row="1" />
+        <Label x:Name="LbLot" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label x:Name="LbTitreOF" Grid.Column="0" Grid.Row="2" Content="Numéro d'OF" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label x:Name="LbOF" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+        <Label x:Name="LbTitreEtiq" Grid.Column="0" Grid.Row="3" Content="Numéro d'Etiquette" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label x:Name="LbEtiq" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label x:Name="LbTitreProduit" Grid.Column="0" Grid.Row="4" Content="Numéro de produit" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label x:Name="LbProduit" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"/>
+        <Label x:Name="LbTitreQuantite" Grid.Column="0" Grid.Row="5" Content="Quantité" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label x:Name="LbQuantite" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"/>
+        <Label x:Name="LbTitreMachine" Grid.Column="0" Grid.Row="6" Content="Numéro de machine" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label x:Name="LbMachine" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
