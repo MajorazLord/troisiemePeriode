@@ -26,7 +26,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -88,6 +88,9 @@
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Manager.cs" />
     <Compile Include="Model\PosteCharge.cs" />
+    <Compile Include="UserControl\ThreeStateToggleButton.xaml.cs">
+      <DependentUpon>ThreeStateToggleButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\ToggleButton.xaml.cs">
       <DependentUpon>ToggleButton.xaml</DependentUpon>
     </Compile>
@@ -99,8 +102,8 @@
     <Compile Include="View\AccueilWindow.xaml.cs">
       <DependentUpon>AccueilWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="View\PageConnection.xaml.cs">
+      <DependentUpon>PageConnection.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageSelectPdc.xaml.cs">
       <DependentUpon>PageSelectPdc.xaml</DependentUpon>
@@ -120,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControl\ThreeStateToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl\ToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Page1.xaml">
+    <Page Include="View\PageConnection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +186,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\btnGris.PNG" />
+    <Resource Include="Resources\btnJaune.PNG" />
+    <Resource Include="Resources\btnRouge.PNG" />
+    <Resource Include="Resources\btnVert.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

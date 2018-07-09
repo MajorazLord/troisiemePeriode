@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,13 +38,23 @@ namespace PointagePresencePdc.View
         {
             InitializeComponent();
             lstgrd.ItemsSource = Mngr.LesGroupeVMs;
+
+            /*if (Mngr.SelectedGroupes.Count() != 0)
+            {
+                foreach (GroupeVM groupeVm in Mngr.SelectedGroupes)
+                {
+                    ListViewItem lvi = (ListViewItem)lstgrd.ItemContainerGenerator.ContainerFromItem(groupeVm);
+                    //CheckBox chkBx = FindVisualChild<CheckBox>(lvi);
+                    ToggleButton chkBx = FindVisualChild<ToggleButton>(lvi);
+                }
+            }*/
             /*chkWspSelectAll.On = new SolidColorBrush(Color.FromRgb(0, 209, 24));
             chkWspSelectAll.Off = new SolidColorBrush(Color.FromRgb(70,70,70));*/
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
 
         private void Lstgrd_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -182,13 +193,39 @@ namespace PointagePresencePdc.View
         {
             Console.WriteLine(lstgrd.SelectedItems.Count);
 
-            List<GroupeVM> listTempo = new List<GroupeVM>();
+            ObservableCollection<GroupeVM> listTempo = new ObservableCollection<GroupeVM>();
             foreach (GroupeVM grpVM in lstgrd.SelectedItems)
             {
                 listTempo.Add(grpVM);
             }
 
-            NavigationService?.Navigate(new PageSelectPdc(listTempo));
+            Mngr.SelectedGroupes = listTempo;
+
+            NavigationService?.Navigate(new PageSelectPdc());
+        }
+
+        private void PageSelectSecteur_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (!(Mngr.SelectedGroupes is null))
+            {
+                if (Mngr.SelectedGroupes.Count() != 0)
+                {
+                    foreach (GroupeVM mngrSelectedGroupe in Mngr.SelectedGroupes)
+                    {
+                        ListViewItem lvi =
+                            (ListViewItem) lstgrd.ItemContainerGenerator.ContainerFromItem(mngrSelectedGroupe);
+                        ToggleButton chkBx = FindVisualChild<ToggleButton>(lvi);
+                        chkBx.Toggled1 = true;
+                        chkBx.Back.Fill = chkBx.On;
+                        chkBx.Dot.Margin = chkBx.RightSide;
+                        ListBoxItem item = ItemsControl.ContainerFromElement(lstgrd, chkBx as DependencyObject) as ListBoxItem;
+                        if (item != null)
+                        {
+                            item.IsSelected = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }

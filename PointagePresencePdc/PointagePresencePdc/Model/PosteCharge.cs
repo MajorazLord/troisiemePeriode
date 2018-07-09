@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PointagePresencePdc.UserControl;
 
 namespace PointagePresencePdc.Model
 {
@@ -19,7 +20,7 @@ namespace PointagePresencePdc.Model
         }
         private List<Machine> _lesMachines;
 
-        public int Statut { get; set; }
+        public ThreeStateToggleButton.Statut Statut { get; set; }
 
         public PosteCharge() { }
 
@@ -27,10 +28,10 @@ namespace PointagePresencePdc.Model
         {
             IdPosteCharge = idPosteCharge;
             _lesMachines = new List<Machine>();
-            Statut = -1;
+            Statut = ThreeStateToggleButton.Statut.NoPicked;
         }
 
-        public PosteCharge(string idPosteCharge, List<Machine> lesMachines, int statut)
+        public PosteCharge(string idPosteCharge, List<Machine> lesMachines, ThreeStateToggleButton.Statut statut)
         {
             IdPosteCharge = idPosteCharge;
             _lesMachines = lesMachines;

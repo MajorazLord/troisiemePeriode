@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PointagePresencePdc.Model;
+using PointagePresencePdc.UserControl;
 
 namespace PointagePresencePdc.ViewModel
 {
@@ -12,8 +13,8 @@ namespace PointagePresencePdc.ViewModel
     {
         public string IdPosteCharge
         {
-            get { return Model.IdPosteCharge; }
-            set { SetProperty(Model.IdPosteCharge, value, () => Model.IdPosteCharge = value); }
+            get => Model.IdPosteCharge;
+            set => SetProperty(Model.IdPosteCharge, value, () => Model.IdPosteCharge = value);
         }
 
         public ObservableCollection<MachineVM> LesMachineVMs
@@ -22,10 +23,10 @@ namespace PointagePresencePdc.ViewModel
         }
         private ObservableCollection<MachineVM> _lesMachineVMs ;
 
-        public int Statut
+        public ThreeStateToggleButton.Statut Statut
         {
-            get { return Model.Statut; }
-            set { SetProperty(Model.Statut, value, () => Model.Statut = value); }
+            get => Model.Statut;
+            set => SetProperty(Model.Statut, value, () => Model.Statut = value);
         }
 
         public bool Equals(PosteChargeVM otherPdcVm)

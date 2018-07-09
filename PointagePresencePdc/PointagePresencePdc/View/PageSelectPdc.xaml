@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PointagePresencePdc.View"
       xmlns:userControl="clr-namespace:PointagePresencePdc.UserControl"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageSelectPdc">
 
@@ -15,54 +15,120 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Pointage présente au poste de charge" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
-        <ListView  
-            Grid.Row="1"
-            Name="lvPdcs" 
-            SelectionMode="Multiple" 
-            Margin="10,10,10,0" 
-            SelectionChanged="LvPdcs_OnSelectionChanged"
-            ScrollViewer.VerticalScrollBarVisibility="Auto"  
-            ScrollViewer.HorizontalScrollBarVisibility="Auto"  
-            ScrollViewer.CanContentScroll="True"  
-            HorizontalContentAlignment="Stretch"
-            HorizontalAlignment="Stretch" 
-            VerticalAlignment="Stretch" 
-            FontSize="32">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView AllowsColumnReorder="false" ColumnHeaderToolTip="Selectionner le ou les groupes à pointer">
-                    <!-- Add a ContextMenu to GridView Header -->
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="GridViewColumnHeader">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <!-- Add GridVeiw Columns -->
-                    <GridViewColumn Width="Auto" >
-                        <GridViewColumn.Header>
-                            <Label/>
-                            <!--<uc:ToggleButton x:Name="chkWspSelectAll" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0"/>-->
-                            <!--<CheckBox Name="chkWspSelectAll" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ChkWspSelectAll_OnChecked"  Unchecked="ChkWspSelectAll_OnUnchecked"  IsThreeState="False"/>-->
-                        </GridViewColumn.Header>
+        <Label Content="Présence au poste de charge" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ListView
+                Grid.Column="0"
+                Name="lvPdcs" 
+                SelectionMode="Multiple" 
+                Margin="10,10,10,0" 
+                SelectionChanged="LvPdcs_OnSelectionChanged"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"  
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"  
+                ScrollViewer.CanContentScroll="True"  
+                HorizontalContentAlignment="Stretch"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                FontSize="32">
 
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <userControl:ToggleButton x:Name="chkWspSelect" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0" />
-                                
-                                <!--<CheckBox Name="chkWspSelect" IsChecked="{Binding Path=IsSelected}" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ChkWspSelect_OnChecked"  Unchecked="ChkWspSelect_OnUnchecked"  IsThreeState="False"/>
-                        -->
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Intitulé"  DisplayMemberBinding="{Binding Path=IdPosteCharge}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Grid.Row="2" Content="Valider" Margin="10" FontSize="36" FontWeight="Bold" VerticalContentAlignment="Center" Click="BtnValidPdcs_OnClick"/>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.Triggers>
+                            <Trigger Property="Control.IsMouseOver" Value="True">
+                                <Setter Property="Control.Background" Value="Transparent"/>
+                                <Setter Property="Control.BorderThickness" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="false" ColumnHeaderToolTip="Selectionner le ou les groupes à pointer">
+                        <!-- Add a ContextMenu to GridView Header -->
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <!-- Add GridVeiw Columns -->
+                        <GridViewColumn Width="Auto" >
+                            <GridViewColumn.Header>
+                                <Label/>
+                            </GridViewColumn.Header>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <userControl:ThreeStateToggleButton x:Name="chkWspSelect" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Intitulé"  DisplayMemberBinding="{Binding Path=IdPosteCharge}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Légende :" FontSize="24" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                    <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,10">
+                        <Image Width="100" Source="../Resources/btnGris.PNG"/>
+                        <Label Content="Non Saisie" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,0,0,10">
+                        <Image Width="100" Source="../Resources/btnVert.PNG"/>
+                        <Label Content="Présent" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Orientation="Vertical" Margin="0,0,0,10">
+                        <Image Width="100" Source="../Resources/btnRouge.PNG"/>
+                        <Label Content="Aucune Présence" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Orientation="Vertical" Margin="0,0,0,10">
+                        <Image Width="100" Source="../Resources/btnJaune.PNG"/>
+                        <Label Content="Présence Partielle" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" x:Name="GridRight">
+                    <Label Content="Mettre un compteur par Groupe si le temps"></Label>
+                    
+
+                </Grid>
+                
+
+
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Retour" Grid.Column="0" Margin="10" FontSize="36" FontWeight="Bold" VerticalContentAlignment="Center" Click="ButtonBase_OnClick"/>
+            <Button Content="Valider" Grid.Column="1" Margin="10" FontSize="36" FontWeight="Bold" VerticalContentAlignment="Center" Click="BtnValidPdcs_OnClick"/>
+        </Grid>
+        
     </Grid>
 </Page>
+

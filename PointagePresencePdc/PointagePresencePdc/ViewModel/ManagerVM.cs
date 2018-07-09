@@ -10,21 +10,18 @@ namespace PointagePresencePdc.ViewModel
 {
     class ManagerVM : BaseViewModel<Manager>
     {
-        private GroupeVM selectedGroupe;
+        public int NoPointage { get; set; }
 
-        public GroupeVM SelectedGroupe
+        private ObservableCollection<GroupeVM> _selectedGroupe;
+
+        public ObservableCollection<GroupeVM> SelectedGroupes
         {
-            get { return selectedGroupe; }
-            set { SetProperty(ref selectedGroupe, value); }
+            get => _selectedGroupe;
+            set => SetProperty(ref _selectedGroupe, value);
         }
 
-        public ObservableCollection<GroupeVM> LesGroupeVMs
-        {
-            get { return _lesGroupeVMs; }
-        }
+        public ObservableCollection<GroupeVM> LesGroupeVMs => _lesGroupeVMs;
         private ObservableCollection<GroupeVM> _lesGroupeVMs = new ObservableCollection<GroupeVM>();
-
-
 
         public ManagerVM()
         {

@@ -18,6 +18,7 @@ namespace PointagePresencePdc.ViewModel
 
         public bool IsSelected { get; set; }
 
+        public int NumberOfElem => LesPosteChargeVMs.Count();
 
         public ObservableCollection<PosteChargeVM> LesPosteChargeVMs
         {

@@ -17,9 +17,9 @@ using PointagePresencePdc.ViewModel;
 namespace PointagePresencePdc.View
 {
     /// <summary>
-    /// Logique d'interaction pour Page1.xaml
+    /// Logique d'interaction pour PageConnection.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class PageConnection : Page
     {
         ManagerVM Mngr
         {
@@ -28,15 +28,28 @@ namespace PointagePresencePdc.View
                 return (Application.Current as App)?.ManagerGlobal;
             }
         }
-        public Page1()
+        public PageConnection()
         {
             InitializeComponent();
-            lbGroupe.DataContext = Mngr;
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PageSelectSecteur());
+            //NavigationService.Navigate(new PageSelectSecteur());
+        }
+
+        private void Btn_Conenction_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(tb_Pointage.Text, out var pointage) && pointage >= 1 && pointage <= 9999)
+            {
+                Mngr.NoPointage = pointage;
+                NavigationService?.Navigate(new PageSelectSecteur());
+            }
+            else
+            {
+                MessageBox.Show("Merci de vérifier votre numéro de pointage", "Erreur Pointage", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
     }
 }

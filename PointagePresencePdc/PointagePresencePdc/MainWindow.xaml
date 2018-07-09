@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PointagePresencePdc"
         mc:Ignorable="d"
-        Source="View/PageSelectSecteur.xaml"
+        Source="View/PageConnection.xaml"
         ShowsNavigationUI="False"
         Title="MainWindow" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
 </NavigationWindow>
